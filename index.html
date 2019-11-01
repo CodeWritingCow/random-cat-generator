@@ -24,18 +24,18 @@
 
     <script type="text/babel">
         const {
-  colors,
-  CssBaseline,
-  ThemeProvider,
-  Typography,
-  Container,
-  makeStyles,
-  createMuiTheme,
-  Box,
-  Button,
-  SvgIcon,
-  Link,
-} = MaterialUI;
+            colors,
+            CssBaseline,
+            ThemeProvider,
+            Typography,
+            Container,
+            makeStyles,
+            createMuiTheme,
+            Box,
+            Button,
+            SvgIcon,
+            Link,
+        } = MaterialUI;
         
         class App extends React.Component {
             constructor(props) {
@@ -59,14 +59,18 @@
                 this.setState({randomFact: `${this.state.randomFacts[Math.floor(Math.random() * this.state.randomFacts.length)]}`})
             }
 
-            render() {                
+            render() {
                 return(
                     <Container>
                     <div>
                         <img src={this.state.imgSrc} alt="" />
-                        <h1>Random Cat Fact</h1>
-                        <p>{this.state.randomFact}</p>
-                        <button onClick={this.handleClick}>MEOW!</button>
+                        <Typography variant="h3" color="primary">
+                        Random Cat Fact
+                        </Typography>
+                        <Typography variant="body1" color="textPrimary">
+                        {this.state.randomFact}
+                        </Typography>
+                        <Button variant="contained" color="primary" onClick={this.handleClick}>MEOW!</Button>
                     </div>
                     </Container>
                 )
