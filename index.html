@@ -18,23 +18,40 @@
     <div id="app"></div>
 
     <script type="text/babel">
-        function App() {
-            return(
-                <div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui molestiae libero impedit! Accusamus, cumque! Iste, aliquid blanditiis obcaecati vero, consequuntur quos veritatis, accusamus animi reiciendis explicabo quod unde repellendus similique!</p>
-                    <Button />
-                </div>
-            );
-        }
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`
+                }
 
-        function Button() {
-            function handleClick(e) {
-                e.preventDefault();
-                console.log('Meow!');
+                this.handleClick = this.handleClick.bind(this);
             }
 
+            handleClick() {
+                console.log('MEOW!');
+                this.setState({imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`});
+            }
+
+            render() {
+                return(
+                    <div>
+                        <img src={this.state.imgSrc} alt="" />
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui molestiae libero impedit! Accusamus, cumque! Iste, aliquid blanditiis obcaecati vero, consequuntur quos veritatis, accusamus animi reiciendis explicabo quod unde repellendus similique!</p>
+                        <button onClick={this.handleClick}>MEOW!</button>
+                    </div>
+                )
+            }
+        }
+
+        function Button(props) {
+            // function handleClick(e) {
+            //     e.preventDefault();
+            //     console.log('Meow!');
+            // }
+
             return(
-                <button onClick={handleClick}>MEOW</button>
+                <button onClick={props.handleClick}>MEOW</button>
             );
         }
         ReactDOM.render(<App/>, document.getElementById('app'));
