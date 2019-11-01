@@ -22,10 +22,17 @@
             constructor(props) {
                 super(props);
                 this.state = {
-                    imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`
+                    imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`,
+                    randomFact: `MEOW!`
                 }
 
                 this.handleClick = this.handleClick.bind(this);
+            }
+
+            componentDidMount() {
+                fetch('cat-facts.json').then((read) => read.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
             }
 
             handleClick() {
@@ -37,13 +44,13 @@
                 return(
                     <div>
                         <img src={this.state.imgSrc} alt="" />
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui molestiae libero impedit! Accusamus, cumque! Iste, aliquid blanditiis obcaecati vero, consequuntur quos veritatis, accusamus animi reiciendis explicabo quod unde repellendus similique!</p>
+                        <p>{this.state.randomFact}</p>
                         <button onClick={this.handleClick}>MEOW!</button>
                     </div>
                 )
             }
         }
-        
+
         ReactDOM.render(<App/>, document.getElementById('app'));
     </script>
 </body>
