@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <h1>Moo</h1>
+    <h1>Meow!</h1>
     <div id="app"></div>
 
     <script type="text/babel">
@@ -22,7 +22,19 @@
             return(
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui molestiae libero impedit! Accusamus, cumque! Iste, aliquid blanditiis obcaecati vero, consequuntur quos veritatis, accusamus animi reiciendis explicabo quod unde repellendus similique!</p>
+                    <Button />
                 </div>
+            );
+        }
+
+        function Button() {
+            function handleClick(e) {
+                e.preventDefault();
+                console.log('Meow!');
+            }
+
+            return(
+                <button onClick={handleClick}>MEOW</button>
             );
         }
         ReactDOM.render(<App/>, document.getElementById('app'));
