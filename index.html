@@ -11,10 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
     <!-- Add JSX. -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
 </head>
 <body>
-    <h1>Meow!</h1>
     <div id="app"></div>
 
     <script type="text/babel">
@@ -23,27 +21,28 @@
                 super(props);
                 this.state = {
                     imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`,
-                    randomFact: `MEOW!`
+                    randomFact: `MEOW!`,
+                    randomFacts: []
                 }
-
                 this.handleClick = this.handleClick.bind(this);
             }
 
             componentDidMount() {
                 fetch('cat-facts.json').then((read) => read.json())
-                .then((data) => console.log(data))
+                .then((data) => this.setState({randomFacts: data}))
                 .catch((err) => console.log(err));
             }
 
             handleClick() {
-                console.log('MEOW!');
                 this.setState({imgSrc: `http://thecatapi.com/api/images/get${'?decache='}${Math.random()}`});
+                this.setState({randomFact: `${this.state.randomFacts[Math.floor(Math.random() * this.state.randomFacts.length)]}`})
             }
 
             render() {
                 return(
                     <div>
                         <img src={this.state.imgSrc} alt="" />
+                        <h1>Random Cat Fact</h1>
                         <p>{this.state.randomFact}</p>
                         <button onClick={this.handleClick}>MEOW!</button>
                     </div>
