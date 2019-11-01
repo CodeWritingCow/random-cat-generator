@@ -33,6 +33,8 @@
             createMuiTheme,
             Box,
             Button,
+            Paper,
+            Grid,
             SvgIcon,
             Link,
         } = MaterialUI;
@@ -63,14 +65,22 @@
                 return(
                     <Container>
                     <div>
-                        <img src={this.state.imgSrc} alt="" />
-                        <Typography variant="h3" color="primary">
-                        Random Cat Fact
-                        </Typography>
-                        <Typography variant="body1" color="textPrimary">
-                        {this.state.randomFact}
-                        </Typography>
-                        <Button variant="contained" color="primary" onClick={this.handleClick}>MEOW!</Button>
+                        <Grid container spacing={3}>
+                            <Paper>
+                                <Grid item xs={12} sm={6}>
+                                    <img src={this.state.imgSrc} alt="" />
+                                </Grid>
+                            </Paper>
+                            <Grid item xs={12} sm={6}>
+                                    <Typography variant="h3" color="primary">
+                                    Random Cat Fact
+                                    </Typography>
+                                    <Typography variant="body1" color="textPrimary">
+                                    {this.state.randomFact}
+                                    </Typography>
+                                    <Button variant="contained" color="primary" onClick={this.handleClick}>MEOW!</Button>
+                            </Grid>
+                        </Grid>
                     </div>
                     </Container>
                 )
